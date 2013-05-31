@@ -12,5 +12,6 @@ script:
   - mkdir -p build
   - cd build
   - qmake ../IM/IM.pro -r
-  - mkdir build
+  - make
+  - make check
 
