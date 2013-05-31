@@ -1,0 +1,18 @@
+language: c++
+
+compiler:
+  - gcc
+
+before_install:
+  - sudo apt-add-repository -y ppa:ubuntu-toolchain-r/test
+  - sudo apt-add-repository ppa:canonical-qt5-edgers/qt5-proper 
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq g++-4.7
+  - sudo apt-get install -qq qtdeclarative5-dev 
+
+script:
+  - mkdir -p build
+  - cd build
+  - qmake 
+  - mkdir build
+
