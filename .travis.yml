@@ -11,6 +11,6 @@ before_install:
 script:
   - mkdir -p build
   - cd build
-  - qmake ..\IM\IM.pro -r
+  - qmake ../IM/IM.pro -r
   - mkdir build
 
