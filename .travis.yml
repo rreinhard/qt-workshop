@@ -4,9 +4,9 @@ compiler:
   - gcc
 
 before_install:
-  - sudo apt-add-repository -y ppa:canonical-qt5-edgers/qt5-proper 
+  - sudo apt-add-repository -y ppa:canonical-qt5-edgers/qt5-proper
   - sudo apt-get update -qq
-  - sudo apt-get install -qq qtdeclarative5-dev 
+  - sudo apt-get install -qq qtdeclarative5-dev qt5-default
 
 script:
   - mkdir -p build
