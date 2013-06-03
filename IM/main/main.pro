@@ -1,3 +1,5 @@
+
+QT += qml quick
 QT -= gui
 
 TARGET = main

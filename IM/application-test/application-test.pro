@@ -1,6 +1,5 @@
-
-QT       += testlib
-QT       -= gui
+QT += testlib
+QT -= gui
 
 CONFIG += testcase
 CONFIG -= app_bundle

@@ -1,2 +1,6 @@
 # Qt Creator user settings
 IM/IM.pro.user
+
+# Qt Creator build directory
+build-*
+

@@ -3,11 +3,10 @@
 
 class Application
 {
-    
 public:
-    Application(int argc, char * argv[]);
+    Application();
 
-    int execute();
+    int execute(int argc, char * argv[]);
 };
 
 #endif // APPLICATION_H
