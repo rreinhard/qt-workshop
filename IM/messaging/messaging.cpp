@@ -11,7 +11,7 @@ void Messaging::start()
 {
     qDebug() << "start";
 
-    _udpSocket.bind(QHostAddress::Broadcast, 41000);
+    _udpSocket.bind(41000);
     connect(&_udpSocket, SIGNAL(readyRead()), this, SLOT(readDatagrams()));
 
     QTimer::singleShot(1000, this, SLOT(broadcast()));
@@ -26,7 +26,7 @@ void Messaging::broadcast()
     datagram.append("Hello world");
     _udpSocket.writeDatagram(datagram, QHostAddress::Broadcast, 41000);
 
-    QTimer::singleShot(2000, this, SLOT(broadcast()));
+    QTimer::singleShot(1000, this, SLOT(broadcast()));
 }
 
 void Messaging::readDatagrams()
@@ -39,6 +39,6 @@ void Messaging::readDatagrams()
 
         _udpSocket.readDatagram(datagram.data(), datagram.size(), &sender, &port);
 
-        qDebug() << "Read " << sender << " " << port;
+        qDebug() << "Read " << sender << port << datagram;
     }
 }
