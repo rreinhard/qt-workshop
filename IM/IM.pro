@@ -7,6 +7,9 @@ SUBDIRS = \
     application-test \
     messaging
 
+application.depends = \
+    messaging
+
 main.depends = \
     application
 
