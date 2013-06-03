@@ -4,7 +4,8 @@ TEMPLATE = subdirs
 SUBDIRS = \
     main \
     application \
-    application-test
+    application-test \
+    messaging
 
 main.depends = \
     application
