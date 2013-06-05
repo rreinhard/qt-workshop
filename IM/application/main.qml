@@ -12,7 +12,7 @@ Rectangle {
 
         anchors.margins: 4
 
-        width: parent.width - 8
+        width: 256
         height: 24
 
         border { color: "black"; width: 1 }
@@ -24,7 +24,31 @@ Rectangle {
             id: nick_name
             focus: true
 
-            text: "nick name"
+            text: ui_controller.nickname
+        }
+    }
+
+
+    Rectangle {
+
+        anchors.right: parent.right
+        anchors.top: parent.top
+
+        anchors.margins: 4
+
+        width: 52
+        height: 24
+
+        border { color: "black"; width: 1 }
+
+        Text {
+            anchors.centerIn: parent
+            text: "change"
+        }
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked : ui_controller.nickname = nick_name.text;
         }
     }
 
@@ -76,7 +100,7 @@ Rectangle {
 
         anchors.margins: 4
 
-        width: 32
+        width: 52
         height: 24
 
         border { color: "black"; width: 1 }
@@ -85,7 +109,6 @@ Rectangle {
             anchors.centerIn: parent
             text: "send"
         }
-
     }
 
     Rectangle {

@@ -3,6 +3,12 @@
 
 #include <QtNetwork/QUdpSocket>
 
+namespace Command {
+    static quint32 const KeepAlive = 0;
+    static quint32 const Message = 1;
+
+}
+
 class Messaging : public QObject
 {
     Q_OBJECT
