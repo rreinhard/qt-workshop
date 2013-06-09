@@ -109,6 +109,11 @@ Rectangle {
             anchors.centerIn: parent
             text: "send"
         }
+        
+        MouseArea {
+            anchors.fill: parent
+            onClicked: ui_controller.send_message(message.text)
+        }
     }
 
     Rectangle {

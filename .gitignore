@@ -4,3 +4,7 @@ IM/IM.pro.user
 # Qt Creator build directory
 build-*
 
+# Eclipse user settings
+.settings
+
+

@@ -21,6 +21,8 @@ public slots:
     void broadcast();
     void readDatagrams();
 
+    void send_message(QString message);
+
 private:
     QUdpSocket _udpSocket;
 };

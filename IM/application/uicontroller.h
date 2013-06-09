@@ -11,15 +11,16 @@ class UIController : public QObject
 public:
     explicit UIController(QObject *parent = 0);
 
+    Q_INVOKABLE void send_message(QString message);
 
     QString nickname() const;
     void setNickname(QString nickname);
 
 signals:
     void nicknameChanged();
+    void dispatch_message(QString message);
 
 private:
-    QString _nickname;
 };
 
 #endif // UICONTROLLER_H

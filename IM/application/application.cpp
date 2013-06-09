@@ -29,6 +29,7 @@ int Application::execute(int argc, char * argv[])
     messagingThread.start();
 
     messaging.connect(&messagingThread, SIGNAL(started()), SLOT(start()));
+    messaging.connect(&ui_controller, SIGNAL(dispatch_message(QString)), SLOT(send_message(QString)));
 
     view.connect(view.engine(), SIGNAL(quit()), SLOT(close()));
     view.setResizeMode(QQuickView::SizeRootObjectToView);
