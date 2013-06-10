@@ -21,7 +21,18 @@ public slots:
     void broadcast();
     void readDatagrams();
 
+    //void send_message(QString message);
+
+
+
+// new interface
+//
+// qml > ui_controller > messaging > transport
+public slots:
     void send_message(QString message);
+
+signals:
+    void send(QByteArray data);
 
 private:
     QUdpSocket _udpSocket;

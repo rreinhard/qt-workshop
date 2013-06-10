@@ -1,12 +1,17 @@
 QT += testlib
 QT -= gui
 
+TARGET = application-test
+TEMPLATE = app
 CONFIG += testcase
 CONFIG -= app_bundle
 
-TARGET = application-test
+SOURCES += \
+    main.cpp \
+    testsendmessages.cpp
 
-TEMPLATE = app
+HEADERS += \
+    testsendmessages.h
 
-SOURCES += application-test.cpp
+include (../application/application.pri)
 
