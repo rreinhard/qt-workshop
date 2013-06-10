@@ -13,7 +13,7 @@ TestSendMessages::TestSendMessages() :
 void TestSendMessages::empty_message_shall_not_be_sent()
 {
     Messaging messaging;
-    connect(this, SIGNAL(send_message(QString())), &messaging, SLOT(send_message(QString)));
+    connect(this, SIGNAL(send_message(QString)), &messaging, SLOT(send_message(QString)));
 
     emit send_message("");
 
