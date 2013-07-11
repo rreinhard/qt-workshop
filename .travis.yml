@@ -20,5 +20,5 @@ script:
   - make check
 
 after_success:
-  - coveralls
+  - coveralls --gcov gcov-4.8
 
