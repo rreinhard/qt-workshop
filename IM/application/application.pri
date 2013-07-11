@@ -1,8 +1,6 @@
 
 QT += qml quick network
 
-unix:QMAKE_CXXFLAGS += -std=c++11
-
 INCLUDEPATH += $$PWD/../application
 DEPENDPATH += $$PWD/../application
 

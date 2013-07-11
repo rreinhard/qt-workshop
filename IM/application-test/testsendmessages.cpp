@@ -19,6 +19,8 @@ void TestSendMessages::empty_message_shall_not_be_sent()
 
     QSignalSpy transport(&messaging, SIGNAL(send(QByteArray)));
 
-    QCOMPARE(transport.wait(1000), false);
     QCOMPARE(transport.count(), 0);
 }
+
+
+

@@ -10,6 +10,7 @@ before_install:
   - sudo apt-get install -qq qtdeclarative5-dev qt5-default g++-4.8
   - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 40 --slave /usr/bin/g++ g++ /usr/bin/g++-4.8
   - sudo update-alternatives --config gcc
+  - sudo pip install cpp-coveralls --use-mirrors
 
 script:
   - mkdir -p build
@@ -17,4 +18,7 @@ script:
   - qmake ../IM/IM.pro -r
   - make
   - make check
+
+after_success:
+  - coveralls
 

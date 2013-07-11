@@ -6,6 +6,8 @@ CONFIG += staticlib
 
 QMAKE_CXXFLAGS += -std=c++11
 
+QMAKE_CXXFLAGS_DEBUG += -fprofile-arcs -ftest-coverage
+
 SOURCES += \
     application.cpp \
     uicontroller.cpp \
