@@ -20,5 +20,5 @@ script:
   - make check
 
 after_success:
-  - coveralls
+  - coveralls --exclude /usr/include
 
