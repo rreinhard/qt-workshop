@@ -3,7 +3,6 @@ QT -= gui
 
 QMAKE_CXXFLAGS += -std=c++11
 
-QMAKE_CXXFLAGS_DEBUG += -fprofile-arcs -ftest-coverage
 QMAKE_LFLAGS_DEBUG += -fprofile-arcs
 
 TARGET = application-test
