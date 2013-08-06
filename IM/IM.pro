@@ -1,15 +1,12 @@
-
 TEMPLATE = subdirs
 
 SUBDIRS = \
     main \
-    application \
-    application-test \
+    messenger \
+    unit-tests \
+    qml-tests
 
-main.depends = \
-    application
+main.depends = messenger
 
-application-test.depends = \
-    application
-
+unit-tests.depends = messenger
 
