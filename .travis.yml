@@ -7,7 +7,7 @@ before_install:
   - sudo apt-add-repository -y ppa:canonical-qt5-edgers/qt5-proper
   - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
   - sudo apt-get update -qq
-  - sudo apt-get install -qq qtdeclarative5-dev qt5-default g++-4.8 xvfb
+  - sudo apt-get install -qq qtdeclarative5-dev qt5-default qtdeclarative5-qtquick2-plugin qtdeclarative5-test-plugin g++-4.8 xvfb
   - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 40 --slave /usr/bin/g++ g++ /usr/bin/g++-4.8 --slave /usr/bin/gcov gcov /usr/bin/gcov-4.8
   - sudo update-alternatives --set gcc /usr/bin/gcc-4.8
   - sudo pip install cpp-coveralls --use-mirrors
