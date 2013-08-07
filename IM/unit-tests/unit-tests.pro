@@ -8,10 +8,14 @@ CONFIG -= app_bundle
 
 SOURCES += \
     main.cpp \
-    dummy_test.cpp
+    controller_test.cpp \
+    communication_test.cpp \
+    mocks/qudpsocket_mock.cpp
 
 HEADERS += \
-    dummy_test.h
+    controller_test.h \
+    communication_test.h \
+    mocks/qudpsocket_mock.h
 
 include(../common.pri)
 include(../messenger/messenger.pri)
