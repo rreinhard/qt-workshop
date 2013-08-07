@@ -13,7 +13,8 @@ HEADERS += \
     include/messenger/application.h \
 
 OTHER_FILES += \
-    qml/main.qml
+    qml/main.qml \
+    qml/Button.qml
 
 RESOURCES += \
     messenger.qrc

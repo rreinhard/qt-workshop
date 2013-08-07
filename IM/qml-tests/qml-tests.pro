@@ -13,5 +13,6 @@ SOURCES += \
 
 OTHER_FILES += \
     utils.js \
-    tst_dummy.qml
+    tst_nickname.qml \
+    tst_button.qml
 

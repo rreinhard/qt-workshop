@@ -49,21 +49,14 @@ Rectangle {
                 }
             }
 
-            Rectangle {
+            Button {
                 width: 50
                 height: parent.height
 
-                Text {
-                    anchors.centerIn: parent
-                    text: "Exit"
-                }
-
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: Qt.quit()
-                }
-
                 border { color: "black"; width: 1 }
+
+                button_text: "Exit"
+                onButtonClicked: Qt.quit()
             }
         }
 
@@ -112,7 +105,7 @@ Rectangle {
                 }
             }
 
-            Rectangle {
+            Button {
                 id: id_submit_message_button
 
                 width: 50
@@ -120,10 +113,7 @@ Rectangle {
 
                 border { color: "black"; width: 1 }
 
-                Text {
-                    anchors.centerIn: parent
-                    text: "Send"
-                }
+                button_text: "Send"
             }
         }
     }
