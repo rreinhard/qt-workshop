@@ -20,5 +20,6 @@ script:
   - xvfb-run --server-args="-screen 0 1024x768x24" make check
 
 after_success:
-  - coveralls --exclude /usr/include
+  - cd ..
+  - coveralls -e /usr/include -e IM/unit-tests -e IM/qml-tests
 
