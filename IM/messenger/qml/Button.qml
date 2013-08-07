@@ -8,6 +8,8 @@ Rectangle {
 
     signal buttonClicked()
 
+    border { color: "black"; width: 1 }
+
     Text {
         anchors.fill: parent
 

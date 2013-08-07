@@ -14,7 +14,8 @@ HEADERS += \
 
 OTHER_FILES += \
     qml/main.qml \
-    qml/Button.qml
+    qml/Button.qml \
+    qml/Nickname.qml
 
 RESOURCES += \
     messenger.qrc

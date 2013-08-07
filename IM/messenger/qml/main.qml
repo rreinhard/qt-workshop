@@ -13,48 +13,12 @@ Rectangle {
             width: parent.width
             height: 25
 
-            Rectangle {
+            Nickname {
                 width: 250
                 height: parent.height
-
-                border { color: "black"; width: 1 }
-
-                Row {
-                    anchors.fill: parent
-                    spacing: 2
-
-                    Text {
-                        width: 80
-                        height: parent.height
-
-                        horizontalAlignment: Text.AlignRight
-                        verticalAlignment: Text.AlignVCenter
-
-                        text: "nickname:"
-                    }
-
-                    TextInput {
-                        width: 150
-                        height: parent.height
-
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignVCenter
-
-                        clip: true
-
-                        selectByMouse: true
-
-                        text: "my name"
-                    }
-                }
             }
 
             Button {
-                width: 50
-                height: parent.height
-
-                border { color: "black"; width: 1 }
-
                 button_text: "Exit"
                 onButtonClicked: Qt.quit()
             }
@@ -107,11 +71,6 @@ Rectangle {
 
             Button {
                 id: id_submit_message_button
-
-                width: 50
-                height: parent.height
-
-                border { color: "black"; width: 1 }
 
                 button_text: "Send"
             }
