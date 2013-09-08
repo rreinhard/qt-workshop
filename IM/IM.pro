@@ -8,8 +8,9 @@ CPP_GUI = \
 
 # sub projects for the UI forms skeleton
 UIC_GUI = \
-#    main-uic \
-#    application-uic \
+    main-uic \
+    application-uic \
+    unit-tests-uic \
 
 # sub projects for the Qml skeleton
 QML_GUI = \

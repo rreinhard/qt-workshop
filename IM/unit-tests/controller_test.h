@@ -8,7 +8,7 @@ class ControllerTest : public QObject
     Q_OBJECT
 
 private slots:
-    void invoke_send_message_signals_send_the_message();
+    void invoke_send_message_sends_signal_send_message();
 };
 
 #endif // CONTROLLER_TEST_H

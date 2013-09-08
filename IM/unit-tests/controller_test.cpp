@@ -5,7 +5,7 @@
 
 #include "controller_test.h"
 
-void ControllerTest::invoke_send_message_signals_send_the_message()
+void ControllerTest::invoke_send_message_sends_signal_send_message()
 {
     // arrange
     IM::Controller testee;

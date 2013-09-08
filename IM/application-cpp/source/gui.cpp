@@ -25,8 +25,8 @@ void Gui::handle_send_button_clicked()
 {
     if(!_message_input.text().isEmpty()) {
         emit send_message(_message_input.text());
+        _message_input.clear();
     }
-    _message_input.clear();
 }
 
 } // IM
