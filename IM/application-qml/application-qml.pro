@@ -1,6 +1,7 @@
 TEMPLATE = lib
 
 QT -= gui
+QT += qml quick
 
 CONFIG += staticlib
 
@@ -20,7 +21,7 @@ OTHER_FILES += \
 RESOURCES += \
     application-qml.qrc
 
-QMAKE_CXXFLAGS_DEBUG += -fprofile-arcs -ftest-coverage
+unix: QMAKE_CXXFLAGS_DEBUG += -fprofile-arcs -ftest-coverage
 
 include(../common.pri)
 include(../messenger/messenger.pri)

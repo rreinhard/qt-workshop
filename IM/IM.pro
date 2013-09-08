@@ -32,6 +32,7 @@ unit-tests-cpp.depends = application-cpp
 
 # dependencies for the UI forms skeleton
 main-uic.depends = messenger application-uic
+unit-tests-uic.depends = application-uic
 
 # dependencies for the Qml skeleton
 main-qml.depends = messenger application-qml

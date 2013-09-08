@@ -17,7 +17,7 @@ HEADERS += \
     include/messenger/iudp_socket.h \
     include/messenger/udp_socket.h
 
-QMAKE_CXXFLAGS_DEBUG += -fprofile-arcs -ftest-coverage
+unix: QMAKE_CXXFLAGS_DEBUG += -fprofile-arcs -ftest-coverage
 
 include(../common.pri)
 

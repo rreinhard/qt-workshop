@@ -14,7 +14,7 @@ HEADERS += \
     include/application-cpp/application-cpp.h \
     include/application-cpp/gui.h
 
-QMAKE_CXXFLAGS_DEBUG += -fprofile-arcs -ftest-coverage
+unix: QMAKE_CXXFLAGS_DEBUG += -fprofile-arcs -ftest-coverage
 
 include(../common.pri)
 include(../messenger/messenger.pri)
