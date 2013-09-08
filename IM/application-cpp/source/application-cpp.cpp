@@ -1,13 +1,11 @@
-#include <QtGui/QGuiApplication>
-#include <QtQuick/QQuickView>
-#include <QtQml/QQmlEngine>
-#include <QtQml/QQmlContext>
+#include <QtWidgets/QApplication>
 
 #include <messenger/controller.h>
 #include <messenger/communication.h>
 #include <messenger/udp_socket.h>
 
-#include "application-qml/application-qml.h"
+#include "application-cpp/gui.h"
+#include "application-cpp/application-cpp.h"
 
 namespace IM {
 
@@ -17,22 +15,22 @@ Application::Application()
 
 int Application::execute(int argc, char * argv[])
 {
-    QGuiApplication application(argc, argv);
-    QQuickView view;
+    QApplication application(argc, argv);
 
     Controller controller;
-    view.engine()->rootContext()->setContextProperty("controller", &controller);
 
     UdpSocket udpSocket;
     Communication communication(udpSocket);
     communication.connect(&controller, SIGNAL(send_message(const QString &, const QString &)), SLOT(handle_send_message(const QString &, const QString &)));
 
-    view.connect(view.engine(), SIGNAL(quit()), SLOT(close()));
-    view.setResizeMode(QQuickView::SizeRootObjectToView);
-    view.setSource(QUrl("qrc:/IM/main.qml"));
+    QPushButton send_button("send");
+    QLineEdit message_input;
 
-    view.show();
+    Gui gui(message_input, send_button);
 
+    controller.connect(&gui, SIGNAL(send_message(QString const &)), SLOT(invoke_send_message(QString const &)));
+
+    gui.show();
     return application.exec();
 }
 
