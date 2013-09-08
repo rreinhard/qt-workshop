@@ -4,10 +4,11 @@
 #include <QtQml/QQmlContext>
 #include <QtCore/QThread>
 
-#include "messenger/application.h"
 #include "messenger/controller.h"
 #include "messenger/communication.h"
 #include "messenger/udp_socket.h"
+
+#include "application-qml/application-qml.h"
 
 namespace IM {
 

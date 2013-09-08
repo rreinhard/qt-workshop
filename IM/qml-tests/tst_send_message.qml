@@ -5,7 +5,7 @@ import QtTest 1.0
 
 import "utils.js" as Utils
 
-import "../messenger/qml"
+import "../application-qml/qml"
 
 Item {
     width: 320

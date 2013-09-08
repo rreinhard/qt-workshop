@@ -1,11 +1,10 @@
 TARGET = messenger
 TEMPLATE = app
 
-QT -= gui
-
 SOURCES +=  \
     main.cpp
 
 include(../common.pri)
+include(../application-qml/application-qml.pri)
 include(../messenger/messenger.pri)
 

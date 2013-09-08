@@ -1,5 +1,4 @@
-
-QT += qml quick network
+QT += network
 
 INCLUDEPATH += $$PWD/include
 DEPENDPATH += $$PWD/include
