@@ -29,8 +29,15 @@ and then click on the run button (green triangle symbol).
 ### Console ###
 
 Create a directory on top level - besides the *IM* directory - and change into this newly created folder.
-Then run qmake:
+Then run qmake and call make:
 ```
 qmake ../IM/IM.pro -r CONFIG+=debug
+make
 ```
+
+To run the tests make target check:
+```
+make check
+```
+
 
