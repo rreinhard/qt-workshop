@@ -11,7 +11,7 @@ Setup
 The project contains three skeletons applications.
 One uses Qml, another Qt Designer ui forms and the third one uses QtWidgets in C++.
 
-After you decided which one to use you may delete the *main-xxx* and *application-xxx* folders that you don't use.
+After you decided which one to use you may delete the *main-xxx*, *application-xxx* and *unit-tests-xxx* folders that you don't use.
 And remove those entries from the main project file *IM.pro* as well.
 
 Build
