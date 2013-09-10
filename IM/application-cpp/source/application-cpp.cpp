@@ -1,4 +1,6 @@
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QLineEdit>
 
 #include <messenger/controller.h>
 #include <messenger/communication.h>
@@ -23,8 +25,8 @@ int Application::execute(int argc, char * argv[])
     Communication communication(udpSocket);
     communication.connect(&controller, SIGNAL(send_message(const QString &, const QString &)), SLOT(handle_send_message(const QString &, const QString &)));
 
-    QPushButton send_button("send");
-    QLineEdit message_input;
+    QPushButton * send_button = new QPushButton("send");
+    QLineEdit * message_input = new QLineEdit();
 
     Gui gui(message_input, send_button);
 

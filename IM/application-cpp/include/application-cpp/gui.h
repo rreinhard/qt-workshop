@@ -3,8 +3,9 @@
 
 #include <QtWidgets/QWidget>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QLineEdit>
+
+class QLineEdit;
+class QPushButton;
 
 namespace IM {
 
@@ -12,7 +13,7 @@ class Gui: public QObject {
     Q_OBJECT
 
 public:
-    Gui(QLineEdit & message_input, QPushButton & send_button);
+    Gui(QLineEdit * message_input, QPushButton * send_button);
 
     void show();
 
@@ -26,8 +27,8 @@ private:
     QWidget _window;
     QHBoxLayout _layout;
 
-    QLineEdit & _message_input;
-    QPushButton & _send_button;
+    QLineEdit * _message_input;
+    QPushButton * _send_button;
 };
 
 } // IM
