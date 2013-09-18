@@ -1,5 +1,10 @@
 TEMPLATE = subdirs
 
+# sub projects for the C++ gui skeleton
+CPP_GUI = \
+    main-cpp \
+    application-cpp \
+    unit-tests-cpp \
 
 SUBDIRS = \
     $${CPP_GUI} \
