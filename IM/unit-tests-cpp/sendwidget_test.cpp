@@ -4,20 +4,20 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QLineEdit>
 
-#include <application-cpp/gui.h>
+#include <application-cpp/sendwidget.h>
 
-#include "gui_test.h"
+#include "sendwidget_test.h"
 
-void GuiTest::init()
+void SendWidgetTest::init()
 {
     _send_button = new QPushButton("send");
     _message_input = new QLineEdit();
 }
 
-void GuiTest::clicking_the_send_button_signals_send_message_with_the_message_from_the_input_field()
+void SendWidgetTest::clicking_the_send_button_signals_send_message_with_the_message_from_the_input_field()
 {
     // arrange
-    IM::Gui testee(_message_input, _send_button);
+    IM::SendWidget testee(_message_input, _send_button);
     QSignalSpy signal_spy(&testee, SIGNAL(send_message(QString const &)));
 
     QString const expected_message = "Hello world.";
@@ -34,10 +34,10 @@ void GuiTest::clicking_the_send_button_signals_send_message_with_the_message_fro
     QCOMPARE(arguments.at(0).toString(), expected_message);
 }
 
-void GuiTest::clicking_the_send_button_does_not_signal_send_message_when_the_input_field_is_empty()
+void SendWidgetTest::clicking_the_send_button_does_not_signal_send_message_when_the_input_field_is_empty()
 {
     // arrange
-    IM::Gui testee(_message_input, _send_button);
+    IM::SendWidget testee(_message_input, _send_button);
     QSignalSpy signal_spy(&testee, SIGNAL(send_message(QString const &)));
 
     _message_input->clear();
@@ -49,10 +49,10 @@ void GuiTest::clicking_the_send_button_does_not_signal_send_message_when_the_inp
     QCOMPARE(signal_spy.count(), 0);
 }
 
-void GuiTest::clicking_the_send_button_clears_the_input_field_is_empty()
+void SendWidgetTest::clicking_the_send_button_clears_the_input_field_is_empty()
 {
     // arrange
-    IM::Gui testee(_message_input, _send_button);
+    IM::SendWidget testee(_message_input, _send_button);
     QSignalSpy signal_spy(&testee, SIGNAL(send_message(QString const &)));
 
     QString const expected_message = "Hello world.";

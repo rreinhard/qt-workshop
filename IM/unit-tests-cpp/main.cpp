@@ -1,7 +1,7 @@
 #include <QtWidgets/QApplication>
 #include <QtTest/QTest>
 
-#include "gui_test.h"
+#include "sendwidget_test.h"
 
 template<typename Test>
 void execute_test(int & exit_code, int argc, char * argv[])
@@ -18,7 +18,7 @@ int main(int argc, char * argv[])
 
     int exit_code = 0;
 
-    execute_test<GuiTest>(exit_code, argc, argv);
+    execute_test<SendWidgetTest>(exit_code, argc, argv);
 
     return exit_code;
 }
