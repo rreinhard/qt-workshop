@@ -5,7 +5,6 @@ Qt workshop at Symposium 2013
 
 [![Coverage Status](https://coveralls.io/repos/rreinhard/qt-workshop/badge.png)](https://coveralls.io/r/rreinhard/qt-workshop)
 
-
 Setup
 -----
 
