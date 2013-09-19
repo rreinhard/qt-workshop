@@ -15,7 +15,7 @@ Communication::Communication(IUdpSocket & udp_socket, const QString & nickname) 
     _nickname(nickname),
     _keepalive_timer()
 {
-    connect (&_keepalive_timer, SIGNAL(timeout(QPrivateSignal)), this, SLOT(handle_send_keep_alive_message()));
+    connect (&_keepalive_timer, SIGNAL(timeout()), this, SLOT(handle_send_keep_alive_message()));
     const quint32 keep_alive_signal_periode = 5000;
     _keepalive_timer.start(keep_alive_signal_periode);
 }
