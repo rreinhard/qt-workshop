@@ -12,8 +12,12 @@ quint32 const Command::Message = 1;
 Communication::Communication(IUdpSocket & udp_socket, const QString & nickname) :
     _udp_socket(udp_socket),
     _port(41000),
-    _nickname(nickname)
+    _nickname(nickname),
+    _keepalive_timer()
 {
+    connect (&_keepalive_timer, SIGNAL(timeout(QPrivateSignal)), this, SLOT(handle_send_keep_alive_message()));
+    const quint32 keep_alive_signal_periode = 5000;
+    _keepalive_timer.start(keep_alive_signal_periode);
 }
 
 void Communication::handle_send_message(const QString & message)

@@ -2,6 +2,7 @@
 #define COMMUNICATION_H
 
 #include <QtCore/QObject>
+#include <QtCore/QTimer>
 
 namespace IM {
 
@@ -23,11 +24,11 @@ public slots:
     void handle_send_message(QString const & message);
     void handle_send_keep_alive_message ();
 
-
 private:
     IUdpSocket & _udp_socket;
     quint16 _port;
     QString _nickname;
+    QTimer _keepalive_timer;
 };
 
 } // IM
