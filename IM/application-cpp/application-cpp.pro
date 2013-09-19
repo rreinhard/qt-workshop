@@ -8,11 +8,15 @@ INCLUDEPATH += include
 
 SOURCES += \
     source/application-cpp.cpp \
-    source/gui.cpp
+    source/gui.cpp \
+    source/toolbar.cpp \
+    source/sendwidget.cpp
 
 HEADERS += \
     include/application-cpp/application-cpp.h \
-    include/application-cpp/gui.h
+    include/application-cpp/gui.h \
+    include/application-cpp/toolbar.h \
+    include/application-cpp/sendwidget.h
 
 unix: QMAKE_CXXFLAGS_DEBUG += -fprofile-arcs -ftest-coverage
 

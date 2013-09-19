@@ -1,35 +1,36 @@
+#include <QtWidgets/QTextEdit>
 #include "application-cpp/gui.h"
-
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QLineEdit>
+#include "application-cpp/sendwidget.h"
+#include "application-cpp/toolbar.h"
 
 namespace IM {
 
-Gui::Gui(QLineEdit * message_input, QPushButton * send_button) :
+Gui::Gui(Toolbar* toolbar, QTextEdit* chat_widget, SendWidget* send_widget) :
     QObject(nullptr),
     _window(),
-    _layout(),
-    _message_input(message_input),
-    _send_button(send_button)
+    _toolbar(toolbar),
+    _send_widget(send_widget),
+    _chat_widget(chat_widget),
+    _main_layout(),
+    _event_layout(),
+    _chat_layout()
 {
-    connect(_send_button, SIGNAL(clicked()), SLOT(handle_send_button_clicked()));
 }
 
 void Gui::show()
 {
-    _layout.addWidget(_message_input);
-    _layout.addWidget(_send_button);
+    _chat_layout.addWidget(_chat_widget);
+    _chat_layout.addWidget(_send_widget);
 
-    _window.setLayout(&_layout);
+
+    _event_layout.addLayout(&_chat_layout);
+
+    _main_layout.addWidget(_toolbar);
+    _main_layout.addLayout(&_event_layout);
+
+
+    _window.setLayout(&_main_layout);
     _window.show();
-}
-
-void Gui::handle_send_button_clicked()
-{
-    if(!_message_input->text().isEmpty()) {
-        emit send_message(_message_input->text());
-        _message_input->clear();
-    }
 }
 
 } // IM

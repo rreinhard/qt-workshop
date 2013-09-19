@@ -6,7 +6,7 @@
 class QPushButton;
 class QLineEdit;
 
-class GuiTest : public QObject
+class SendWidgetTest : public QObject
 {
     Q_OBJECT
 

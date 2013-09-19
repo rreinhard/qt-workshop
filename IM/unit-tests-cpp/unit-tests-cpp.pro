@@ -7,10 +7,10 @@ CONFIG -= app_bundle
 
 SOURCES += \
     main.cpp \
-    gui_test.cpp
+    sendwidget_test.cpp
 
 HEADERS += \
-    gui_test.h
+    sendwidget_test.h
 
 include(../common.pri)
 include(../application-cpp/application-cpp.pri)
