@@ -1,3 +1,4 @@
+#include <QtCore/QStringListModel>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QLineEdit>
@@ -47,7 +48,9 @@ int Application::execute(int argc, char * argv[])
     QLineEdit * message_input = new QLineEdit();
     SendWidget* send_widget = new SendWidget(message_input, send_button);
 
+    QStringListModel* online_list_model = new QStringListModel();
     QListView* online_list_view = new QListView();
+    online_list_view->setModel(online_list_model);
 
     Gui gui(toolbar, chat_widget, send_widget, online_list_view);
 
