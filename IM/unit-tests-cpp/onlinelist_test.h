@@ -12,6 +12,7 @@ public:
 private slots:
 
     void adding_a_single_user();
+    void adding_a_user_again();
     void adding_lots_of_users();
 
 };

@@ -9,6 +9,7 @@ class OnlineListIntegration : public QObject
     
 private slots:
     void a_user_goes_offline();
+    void a_user_stops_updating();
 
 signals:
     void dummy();
