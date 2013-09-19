@@ -3,7 +3,7 @@ Qt workshop at Symposium 2013
 
 [![Build Status](https://travis-ci.org/rreinhard/qt-workshop.png?branch=master)](https://travis-ci.org/rreinhard/qt-workshop)
 
-[![Coverage Status](https://coveralls.io/repos/rreinhard/qt-workshop/badge.png)](https://coveralls.io/r/rreinhard/qt-workshop)
+[![Coverage Status](https://coveralls.io/repos/rreinhard/qt-workshop/badge.png?branch=master)](https://coveralls.io/r/rreinhard/qt-workshop?branch=master)
 
 Setup
 -----

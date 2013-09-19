@@ -2,6 +2,7 @@
 #define COMMUNICATION_H
 
 #include <QtCore/QObject>
+#include <QtCore/QTimer>
 
 namespace IM {
 
@@ -18,15 +19,17 @@ class Communication : public QObject
 {
     Q_OBJECT
 public:
-    Communication(IUdpSocket & udp_socket);
+    Communication(IUdpSocket & udp_socket, QString const & nickname);
 
 public slots:
-    void handle_send_message(quint32 command, QString const & nickname, QString const & message);
-
+    void handle_send_message(quint32 command, QString const & message);
+    void handle_send_keep_alive_message ();
 
 private:
     IUdpSocket & _udp_socket;
     quint16 _port;
+    QString _nickname;
+    QTimer _keepalive_timer;
 };
 
 } // IM

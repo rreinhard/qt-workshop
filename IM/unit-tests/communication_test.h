@@ -9,6 +9,7 @@ class CommunicationTest : public QObject
 
 private slots:
     void handle_send_message_broadcasts_the_message_over_udp();
+    void send_keep_alive_message_over_udp();
 };
 
 #endif // COMMUNICATION_TEST_H
