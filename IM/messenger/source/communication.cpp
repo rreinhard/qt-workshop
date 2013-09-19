@@ -33,7 +33,7 @@ void Communication::handle_send_message(quint32 command, const QString & message
     stream << message;
 
     _udp_socket.writeDatagram(data, QHostAddress::Broadcast, _port);
-    qDebug() << "nickname: " << _nickname;
+    qDebug() << "nickname: " << _nickname << "message: " << message;
 }
 
 void Communication::handle_send_keep_alive_message ()
