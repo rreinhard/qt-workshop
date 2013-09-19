@@ -18,7 +18,7 @@ void SendWidgetTest::clicking_the_send_button_signals_send_message_with_the_mess
 {
     // arrange
     IM::SendWidget testee(_message_input, _send_button);
-    QSignalSpy signal_spy(&testee, SIGNAL(send_message(QString const &)));
+    QSignalSpy signal_spy(&testee, SIGNAL(send_message(quint32, QString const &)));
 
     QString const expected_message = "Hello world.";
     _message_input->setText(expected_message);
@@ -30,15 +30,16 @@ void SendWidgetTest::clicking_the_send_button_signals_send_message_with_the_mess
     QCOMPARE(signal_spy.count(), 1);
 
     const auto arguments = signal_spy.takeFirst();
-    QCOMPARE(arguments.size(), 1);
-    QCOMPARE(arguments.at(0).toString(), expected_message);
+    QCOMPARE(arguments.size(), 2);
+    QCOMPARE(arguments.at(1).toString(), expected_message);
 }
+
 
 void SendWidgetTest::clicking_the_send_button_does_not_signal_send_message_when_the_input_field_is_empty()
 {
     // arrange
     IM::SendWidget testee(_message_input, _send_button);
-    QSignalSpy signal_spy(&testee, SIGNAL(send_message(QString const &)));
+    QSignalSpy signal_spy(&testee, SIGNAL(send_message(quint32, QString const &)));
 
     _message_input->clear();
 
@@ -53,7 +54,7 @@ void SendWidgetTest::clicking_the_send_button_clears_the_input_field_is_empty()
 {
     // arrange
     IM::SendWidget testee(_message_input, _send_button);
-    QSignalSpy signal_spy(&testee, SIGNAL(send_message(QString const &)));
+    QSignalSpy signal_spy(&testee, SIGNAL(send_message(quint32, QString const &)));
 
     QString const expected_message = "Hello world.";
     _message_input->setText(expected_message);

@@ -13,17 +13,15 @@ class SendWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SendWidget(QLineEdit * message_input,
-                        QPushButton * send_button,
-                        QWidget *parent = 0);
+    SendWidget(QLineEdit * message_input,
+               QPushButton * send_button,
+               QWidget *parent = 0);
 
-    void show();
-    
 public slots:
     void handle_send_button_clicked();
 
 signals:
-    void send_message(QString const & message);
+    void send_message(quint32 command, QString const & message);
 
 private:
     QHBoxLayout _layout;

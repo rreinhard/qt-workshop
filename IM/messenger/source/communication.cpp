@@ -1,5 +1,6 @@
 #include <QtCore/QDataStream>
 #include <QtNetwork/QHostAddress>
+#include <QtCore/QDebug>
 
 #include "messenger/iudp_socket.h"
 #include "messenger/communication.h"
@@ -32,6 +33,7 @@ void Communication::handle_send_message(quint32 command, const QString & message
     stream << message;
 
     _udp_socket.writeDatagram(data, QHostAddress::Broadcast, _port);
+    qDebug() << "nickname: " << _nickname << "message: " << message;
 }
 
 void Communication::handle_send_keep_alive_message ()
@@ -44,6 +46,11 @@ void Communication::handle_send_keep_alive_message ()
 
     _udp_socket.writeDatagram(data, QHostAddress::Broadcast, _port);
 
+}
+
+void Communication::handle_set_nickname (QString const & nickname)
+{
+  _nickname = nickname;
 }
 
 } // IM
