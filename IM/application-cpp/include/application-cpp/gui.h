@@ -6,6 +6,7 @@
 #include <QtWidgets/QVBoxLayout>
 
 class QLineEdit;
+class QListView;
 class QPushButton;
 class QTextEdit;
 
@@ -19,7 +20,7 @@ class Gui: public QObject {
     Q_OBJECT
 
 public:
-    Gui(Toolbar *toolbar, QTextEdit * chat_widget, SendWidget *send_widget);
+    Gui(Toolbar *toolbar, QTextEdit * chat_widget, SendWidget *send_widget, QListView* online_list_view);
 
     void show();
 
@@ -28,6 +29,7 @@ private:
     Toolbar* _toolbar;
     SendWidget* _send_widget;
     QTextEdit * _chat_widget;
+    QListView*  _online_list;
     QVBoxLayout _main_layout;
     QHBoxLayout _event_layout;
     QVBoxLayout _chat_layout;

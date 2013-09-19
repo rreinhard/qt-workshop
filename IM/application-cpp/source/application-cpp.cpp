@@ -1,6 +1,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QListView>
 #include <QtWidgets/QTextEdit>
 
 #include <messenger/controller.h>
@@ -38,7 +39,9 @@ int Application::execute(int argc, char * argv[])
     QLineEdit * message_input = new QLineEdit();
     SendWidget* send_widget = new SendWidget(message_input, send_button);
 
-    Gui gui(toolbar, chat_widget, send_widget);
+    QListView* online_list_view = new QListView();
+
+    Gui gui(toolbar, chat_widget, send_widget, online_list_view);
 
     controller.connect(&gui, SIGNAL(send_message(QString const &)), SLOT(invoke_send_message(QString const &)));
 
