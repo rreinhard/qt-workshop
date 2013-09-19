@@ -17,7 +17,7 @@ void CommunicationTest::handle_send_message_broadcasts_the_message_over_udp()
     const QString expected_nickname = "Name";
     IM::Communication testee(udp_socket, expected_nickname);
     const QString expected_message = "Hello world.";
-    testee.handle_send_message(expected_message);
+    testee.handle_send_message(IM::Command::Message, expected_message);
 
     // assert
     QCOMPARE(writeDatagram.count(), 1);
