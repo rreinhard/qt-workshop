@@ -13,6 +13,7 @@
 #include "application-cpp/gui.h"
 #include "application-cpp/application-cpp.h"
 #include "application-cpp/sendwidget.h"
+#include "application-cpp/onlinelist.h"
 
 namespace IM {
 
@@ -30,6 +31,10 @@ int Application::execute(int argc, char * argv[])
     Communication communication(udpSocket, "Dummy");
     communication.connect(&controller, SIGNAL(send_message(const QString &, const QString &)), SLOT(handle_send_message(const QString &, const QString &)));
 
+    OnlineList onlinelist;
+
+    //QTextObject::connect(&communication, SIGNAL(), &onlinelist, SLOT(update_user(QString));
+
     QPushButton * event_button = new QPushButton("event");
     QPushButton * settings_button = new QPushButton("settings");
 
@@ -43,6 +48,10 @@ int Application::execute(int argc, char * argv[])
     QStringListModel* online_list_model = new QStringListModel();
     QListView* online_list_view = new QListView();
     online_list_view->setModel(online_list_model);
+    online_list_model->setStringList(onlinelist.get_online_users());
+
+
+
 
     Gui gui(toolbar, chat_widget, send_widget, online_list_view);
 

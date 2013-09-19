@@ -26,11 +26,13 @@ void OnlineList::update_user(QString const & nickname)
     if(!found_user)
     {
         _online_users.append(User_entry(nickname, now));
+        emit list_changed(get_online_users());
     }
 }
 
 void OnlineList::update_timestamps()
 {
+    bool listchanged = false;
     if (_online_users.empty())
         return;
 
@@ -41,9 +43,15 @@ void OnlineList::update_timestamps()
         if(iterator->second.addSecs(7) > now)
         {
             _online_users.erase(iterator);
+            listchanged = true;
         }
     }
 
+    if (listchanged)
+    {
+        QStringList user_list = get_online_users();
+        emit list_changed(user_list);
+    }
 }
 
 QStringList OnlineList::get_online_users()
