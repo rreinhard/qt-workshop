@@ -11,14 +11,16 @@ SOURCES += \
     source/gui.cpp \
     source/toolbar.cpp \
     source/sendwidget.cpp \
-    source/onlinelist.cpp
+    source/onlinelist.cpp \
+    source/set_nickname_dialog.cpp
 
 HEADERS += \
     include/application-cpp/application-cpp.h \
     include/application-cpp/gui.h \
     include/application-cpp/toolbar.h \
     include/application-cpp/sendwidget.h \
-    include/application-cpp/onlinelist.h
+    include/application-cpp/onlinelist.h \
+    include/application-cpp/set_nickname_dialog.h
 
 unix: QMAKE_CXXFLAGS_DEBUG += -fprofile-arcs -ftest-coverage
 

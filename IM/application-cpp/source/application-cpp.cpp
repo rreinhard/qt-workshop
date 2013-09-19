@@ -12,6 +12,7 @@
 #include "application-cpp/gui.h"
 #include "application-cpp/application-cpp.h"
 #include "application-cpp/sendwidget.h"
+#include "application-cpp/set_nickname_dialog.h"
 
 namespace IM {
 
@@ -23,14 +24,21 @@ int Application::execute(int argc, char * argv[])
 {
     QApplication application(argc, argv);
 
-    Controller controller;
-
     UdpSocket udpSocket;
     Communication communication(udpSocket, "Dummy");
-    communication.connect(&controller, SIGNAL(send_message(const QString &, const QString &)), SLOT(handle_send_message(const QString &, const QString &)));
+
 
     QPushButton * event_button = new QPushButton("event");
     QPushButton * settings_button = new QPushButton("settings");
+
+    QPushButton * set_button = new QPushButton("set nickname");
+    QLineEdit * nickname_input = new QLineEdit(communication.get_nickname());
+
+    SetNicknameDialog set_nickname_dialog(nickname_input, set_button);
+    set_nickname_dialog.setModal(true);
+    QObject::connect(settings_button, SIGNAL(clicked()), &set_nickname_dialog, SLOT(show()));
+
+    communication.connect(&set_nickname_dialog, SIGNAL(set_nickname(const QString &)), SLOT(handle_set_nickname(const QString &)));
 
     Toolbar* toolbar = new Toolbar(event_button, settings_button);
     QTextEdit* chat_widget = new QTextEdit();
@@ -43,7 +51,7 @@ int Application::execute(int argc, char * argv[])
 
     Gui gui(toolbar, chat_widget, send_widget, online_list_view);
 
-    controller.connect(&gui, SIGNAL(send_message(QString const &)), SLOT(invoke_send_message(QString const &)));
+    communication.connect(send_widget, SIGNAL(send_message(quint32, QString const &)), SLOT(handle_send_message(quint32, QString const &)));
 
     gui.show();
     return application.exec();

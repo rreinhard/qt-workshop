@@ -1,6 +1,10 @@
-#include "application-cpp/sendwidget.h"
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QLineEdit>
+#include <messenger/communication.h>
+
+#include "application-cpp/sendwidget.h"
+
+
 
 namespace IM {
 
@@ -19,7 +23,7 @@ SendWidget::SendWidget(QLineEdit * message_input, QPushButton * send_button, QWi
 void SendWidget::handle_send_button_clicked()
 {
     if(!_message_input->text().isEmpty()) {
-        emit send_message(_message_input->text());
+        emit send_message(Command::Message, _message_input->text());
         _message_input->clear();
     }
 }

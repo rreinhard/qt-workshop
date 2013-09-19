@@ -1,5 +1,5 @@
-#ifndef GUI_TEST_H
-#define GUI_TEST_H
+#ifndef SEND_WIDGET_TEST_H
+#define SEND_WIDGET_TEST_H
 
 #include <QtCore/QObject>
 
@@ -22,4 +22,4 @@ private:
     QLineEdit * _message_input;
 };
 
-#endif // GUI_TEST_H
+#endif // SEND_WIDGET_TEST_H
