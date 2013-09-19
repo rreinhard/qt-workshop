@@ -25,7 +25,7 @@ int Application::execute(int argc, char * argv[])
     Controller controller;
 
     UdpSocket udpSocket;
-    Communication communication(udpSocket);
+    Communication communication(udpSocket, "Dummy");
     communication.connect(&controller, SIGNAL(send_message(const QString &, const QString &)), SLOT(handle_send_message(const QString &, const QString &)));
 
     QPushButton * event_button = new QPushButton("event");
