@@ -18,6 +18,7 @@ public:
     QStringList get_online_users();
 
 signals:
+    void list_changed(QStringList list);
 
 public slots:
     void update_user(QString const & nickname);
