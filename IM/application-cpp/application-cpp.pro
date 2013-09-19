@@ -11,6 +11,7 @@ SOURCES += \
     source/gui.cpp \
     source/toolbar.cpp \
     source/sendwidget.cpp \
+    source/onlinelist.cpp \
     source/onlinelist.cpp
 
 HEADERS += \

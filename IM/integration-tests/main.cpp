@@ -2,6 +2,7 @@
 #include <QtTest/QTest>
 
 #include "communication_integration.h"
+#include "onlinelist_integration.h"
 
 template<typename Test>
 void execute_test(int & exit_code, int argc, char * argv[])
@@ -19,6 +20,7 @@ int main(int argc, char * argv[])
     int exit_code = 0;
 
     execute_test<CommunicationIntegration>(exit_code, argc, argv);
+    execute_test<OnlineListIntegration>(exit_code, argc, argv);
 
     return exit_code;
 }
