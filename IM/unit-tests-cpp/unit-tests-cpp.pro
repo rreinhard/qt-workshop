@@ -11,14 +11,16 @@ SOURCES += \
     setnickname_test.cpp \
     onlinelist_test.cpp \
     application_test.cpp \
-    gui_test.cpp
+    gui_test.cpp \
+    eventhandler_test.cpp
 
 HEADERS += \
     sendwidget_test.h \
     setnickname_test.h \
     onlinelist_test.h \
     application_test.h \
-    gui_test.h
+    gui_test.h \
+    eventhandler_test.h
 
 include(../common.pri)
 include(../application-cpp/application-cpp.pri)
