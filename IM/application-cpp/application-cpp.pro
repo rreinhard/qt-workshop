@@ -13,7 +13,8 @@ SOURCES += \
     source/sendwidget.cpp \
     source/onlinelist.cpp \
     source/set_nickname_dialog.cpp \
-    source/eventhandler.cpp
+    source/eventhandler.cpp \
+    source/eventlist.cpp
 
 HEADERS += \
     include/application-cpp/application-cpp.h \
@@ -23,7 +24,8 @@ HEADERS += \
     include/application-cpp/onlinelist.h \
     include/application-cpp/set_nickname_dialog.h \
     include/application-cpp/eventhandler.h \
-    include/application-cpp/datastructures.h
+    include/application-cpp/datastructures.h \
+    include/application-cpp/eventlist.h
 
 unix: QMAKE_CXXFLAGS_DEBUG += -fprofile-arcs -ftest-coverage
 
