@@ -42,7 +42,7 @@ void OnlineList::update_timestamps()
     {
         if(iterator->second.addSecs(7) < now)
         {
-            _online_users.erase(iterator);
+            iterator = _online_users.erase(iterator);
             listchanged = true;
         }
     }

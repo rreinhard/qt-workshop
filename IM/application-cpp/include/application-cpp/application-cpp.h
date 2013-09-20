@@ -9,6 +9,9 @@ class QTextEdit;
 
 namespace IM {
 
+class Communication;
+class EventHandler;
+
 class Application : public QObject
 {
     Q_OBJECT
@@ -17,13 +20,16 @@ public:
 
     int execute(int argc, char * argv[]);
 
-public slots:
+private slots:
     void update_Model(QStringList list);
     void received_message(QString const & nickname, QString const & message);
+    void send_event_message(QString const & event_name);
 
 private:
     QStringListModel* _online_list_model;
     QTextEdit* _chat_widget;
+    Communication* _communication;
+    EventHandler* _eventhandler;
 };
 
 } // IM
