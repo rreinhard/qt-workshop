@@ -11,6 +11,8 @@ private slots:
     void handle_send_message_broadcasts_the_message_over_udp();
     void send_keep_alive_message_broadcasts_the_keep_alive_message_over_udp();
     void set_nickname_and_send_message_broadcasts_the_message_over_udp_with_correct_nickname_set();
+    void received_keep_alive_test();
+    void received_message_test();
 };
 
 #endif // COMMUNICATION_TEST_H

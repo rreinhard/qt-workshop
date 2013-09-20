@@ -9,7 +9,7 @@ class CommunicationIntegration : public QObject
     
 private slots:
     void keep_alive_message_should_be_sent_every_5_seconds();
-    
+    void no_keep_alive_if_empty_name();
 };
 
 #endif // COMMUNICATION_INTEGRATION_H

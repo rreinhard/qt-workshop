@@ -2,18 +2,24 @@
 #define IUDP_SOCKET_H
 
 #include <QtCore/QtGlobal>
+#include <QtCore/QObject>
 
 class QHostAddress;
 class QByteArray;
 
 namespace IM {
 
-class IUdpSocket
+class IUdpSocket : public QObject
 {
+    Q_OBJECT
+
 public:
-    ~IUdpSocket() {}
+    virtual ~IUdpSocket() {}
 
     virtual qint64 writeDatagram(QByteArray const & datagram, QHostAddress const & host, quint16 port) = 0;
+
+signals:
+    void receivedDatagramm(QByteArray & datagram);
 };
 
 } // IM

@@ -6,7 +6,7 @@
 
 #include "messenger/iudp_socket.h"
 
-class QUdpSocketMock : public QObject, public IM::IUdpSocket
+class QUdpSocketMock : public IM::IUdpSocket
 {
     Q_OBJECT
 

@@ -18,21 +18,28 @@
 
 namespace IM {
 
-Application::Application()
-{
-}
+Application::Application() :
+    QObject() ,
+    _online_list_model(new QStringListModel())
+{}
 
 int Application::execute(int argc, char * argv[])
 {
     QApplication application(argc, argv);
 
-    UdpSocket udpSocket;
-    Communication communication(udpSocket, "Dummy");
+    const quint16 port = 41000;
+
+    UdpSocket udpSocket(port);
+    Communication communication(udpSocket, "Dummy", port);
 
 
     OnlineList onlinelist;
 
-    //QTextObject::connect(&communication, SIGNAL(), &onlinelist, SLOT(update_user(QString));
+    connect(&communication, SIGNAL(received_keep_alive(QString)), &onlinelist, SLOT(update_user(QString)));
+    connect(&onlinelist, SIGNAL(list_changed(QStringList)), SLOT(update_Model(QStringList)));
+
+    _chat_widget = new QTextEdit();
+    _chat_widget->setReadOnly(true);
 
     QPushButton * event_button = new QPushButton("event");
     QPushButton * settings_button = new QPushButton("settings");
@@ -47,26 +54,36 @@ int Application::execute(int argc, char * argv[])
     communication.connect(&set_nickname_dialog, SIGNAL(set_nickname(const QString &)), SLOT(handle_set_nickname(const QString &)));
 
     Toolbar* toolbar = new Toolbar(event_button, settings_button);
-    QTextEdit* chat_widget = new QTextEdit();
 
     QPushButton * send_button = new QPushButton("send");
     QLineEdit * message_input = new QLineEdit();
     SendWidget* send_widget = new SendWidget(message_input, send_button);
 
-    QStringListModel* online_list_model = new QStringListModel();
+
     QListView* online_list_view = new QListView();
-    online_list_view->setModel(online_list_model);
-    online_list_model->setStringList(onlinelist.get_online_users());
+    online_list_view->setModel(_online_list_model);
+    _online_list_model->setStringList(onlinelist.get_online_users());
 
 
 
 
-    Gui gui(toolbar, chat_widget, send_widget, online_list_view);
+    Gui gui(toolbar, _chat_widget, send_widget, online_list_view);
 
     communication.connect(send_widget, SIGNAL(send_message(quint32, QString const &)), SLOT(handle_send_message(quint32, QString const &)));
+    connect(&communication, SIGNAL(received_message(QString const &, QString const &)), SLOT(received_message(QString const &, QString const &)));
 
     gui.show();
     return application.exec();
+}
+
+void Application::update_Model(QStringList list)
+{
+    _online_list_model->setStringList(list);
+}
+
+void Application::received_message(QString const & nickname, QString const & message)
+{
+    _chat_widget->append(nickname + ": " + message);
 }
 
 } // IM

@@ -17,7 +17,7 @@ void CommunicationIntegration::keep_alive_message_should_be_sent_every_5_seconds
     QSignalSpy writeDatagram(&udp_socket, SIGNAL(called_writeDatagram(QByteArray const &, QHostAddress const &, quint16)));
 
     // act
-    IM::Communication testee(udp_socket, expected_nickname);
+    IM::Communication testee(udp_socket, expected_nickname, 41000);
 
     const quint32 keep_alive_signal_periode = 10000;
     writeDatagram.wait(keep_alive_signal_periode);
@@ -41,4 +41,24 @@ void CommunicationIntegration::keep_alive_message_should_be_sent_every_5_seconds
     const quint32 expected_command = IM::Command::KeepAlive;
     QCOMPARE(command, expected_command);
     QCOMPARE(nickname, expected_nickname);
+}
+
+
+void CommunicationIntegration::no_keep_alive_if_empty_name()
+{
+    const QString expected_nickname;
+
+    // arrange
+    qRegisterMetaType<QHostAddress>("QHostAddress");
+    QUdpSocketStub udp_socket;
+    QSignalSpy writeDatagram(&udp_socket, SIGNAL(called_writeDatagram(QByteArray const &, QHostAddress const &, quint16)));
+
+    // act
+    IM::Communication testee(udp_socket, expected_nickname, 41000);
+
+    const quint32 keep_alive_signal_periode = 10000;
+    writeDatagram.wait(keep_alive_signal_periode);
+
+    // assert
+    QCOMPARE(writeDatagram.count(), 0);
 }

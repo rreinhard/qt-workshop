@@ -9,7 +9,7 @@ class QLineEdit;
 class QListView;
 class QPushButton;
 class QTextEdit;
-
+class QStringList;
 
 namespace IM {
 
@@ -24,6 +24,8 @@ public:
 
     void show();
 
+    bool isShown() {return _window.isVisible();}
+
 private:
     QWidget _window;
     Toolbar* _toolbar;
@@ -34,6 +36,7 @@ private:
     QHBoxLayout _event_layout;
     QVBoxLayout _chat_layout;
 };
+
 
 } // IM
 

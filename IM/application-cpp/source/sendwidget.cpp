@@ -17,6 +17,7 @@ SendWidget::SendWidget(QLineEdit * message_input, QPushButton * send_button, QWi
   _layout.addWidget(_send_button);
   setLayout(&_layout);
   connect(_send_button, SIGNAL(clicked()), SLOT(handle_send_button_clicked()));
+  connect(_message_input, SIGNAL(returnPressed()), SLOT(handle_send_button_clicked()));
 }
 
 

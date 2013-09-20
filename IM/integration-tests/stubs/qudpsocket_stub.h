@@ -6,7 +6,7 @@
 
 #include "messenger/iudp_socket.h"
 
-class QUdpSocketStub : public QObject, public IM::IUdpSocket
+class QUdpSocketStub : public IM::IUdpSocket
 {
     Q_OBJECT
 

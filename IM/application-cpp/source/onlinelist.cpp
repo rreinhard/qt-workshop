@@ -40,7 +40,7 @@ void OnlineList::update_timestamps()
 
     for(User_list::iterator iterator = _online_users.begin(); iterator != _online_users.end(); iterator++)
     {
-        if(iterator->second.addSecs(7) > now)
+        if(iterator->second.addSecs(7) < now)
         {
             _online_users.erase(iterator);
             listchanged = true;

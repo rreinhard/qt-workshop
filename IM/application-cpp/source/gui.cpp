@@ -17,10 +17,6 @@ Gui::Gui(Toolbar* toolbar, QTextEdit* chat_widget, SendWidget* send_widget, QLis
     _event_layout(),
     _chat_layout()
 {
-}
-
-void Gui::show()
-{
     _chat_layout.addWidget(_chat_widget);
     _chat_layout.addWidget(_send_widget);
 
@@ -33,6 +29,10 @@ void Gui::show()
 
 
     _window.setLayout(&_main_layout);
+}
+
+void Gui::show()
+{
     _window.show();
 }
 
