@@ -15,7 +15,7 @@ class UdpSocket : public IUdpSocket
 public:
     UdpSocket(quint16 port);
     ~UdpSocket();
-    virtual qint64 writeDatagram(QByteArray const & datagram, QHostAddress const & host, quint16 port) /*override final*/;
+    virtual qint64 writeDatagram(QByteArray const & datagram, QHostAddress const & host, quint16 port) override final;
 
 
 

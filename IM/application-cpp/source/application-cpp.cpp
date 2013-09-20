@@ -23,7 +23,8 @@ Application::Application() :
     QObject() ,
     _online_list_model(new QStringListModel()),
     _communication(nullptr),
-    _eventhandler(nullptr)
+    _eventhandler(nullptr),
+    _onlinelist(nullptr)
 {}
 
 int Application::execute(int argc, char * argv[])
@@ -36,10 +37,12 @@ int Application::execute(int argc, char * argv[])
     _communication = new Communication(udpSocket, "Dummy", port);
 
 
-    OnlineList onlinelist;
+    _onlinelist = new OnlineList();
+   // _eventList = new EventList();
 
-    connect(_communication, SIGNAL(received_keep_alive(QString)), &onlinelist, SLOT(update_user(QString)));
-    connect(&onlinelist, SIGNAL(list_changed(QStringList)), SLOT(update_Model(QStringList)));
+    connect(_communication, SIGNAL(received_keep_alive(QString)), _onlinelist, SLOT(update_user(QString)));
+    connect(_onlinelist, SIGNAL(list_changed(QStringList)), SLOT(update_Model()));
+    //connect(_eventList, SIGNAL(list_changed(QStringList)), SLOT(update_Model()));
 
     _chat_widget = new QTextEdit();
     _chat_widget->setReadOnly(true);
@@ -85,7 +88,7 @@ int Application::execute(int argc, char * argv[])
 
     QListView* online_list_view = new QListView();
     online_list_view->setModel(_online_list_model);
-    _online_list_model->setStringList(onlinelist.get_online_users());
+    _online_list_model->setStringList(_onlinelist->get_online_users());
 
     Gui gui(toolbar, _chat_widget, send_widget, online_list_view);
 
@@ -96,9 +99,31 @@ int Application::execute(int argc, char * argv[])
     return application.exec();
 }
 
-void Application::update_Model(QStringList list)
+void Application::update_Model()
 {
-    _online_list_model->setStringList(list);
+    QStringList user_list  = _onlinelist->get_online_users();
+   // auto event_list = _eventList->get_active_events();
+
+    QStringList merged_list;
+
+    QStringListIterator userIterator(user_list);
+    while (userIterator.hasNext())
+    {
+        const QString current_user = userIterator.next();
+
+       merged_list.append(current_user);
+
+/*         QListIterator<> eventIterator(event_list);
+        while (eventIterator.hasNext())
+        {
+            const EventData current_event = eventIterator.next();
+
+            if (current_event.nickname == current_user)
+                merged_list.append("\t"+current_event.event_name);
+      }*/
+    }
+
+    _online_list_model->setStringList(merged_list);
 }
 
 void Application::received_message(QString const & nickname, QString const & message)
