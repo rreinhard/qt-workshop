@@ -41,17 +41,33 @@ int Application::execute(int argc, char * argv[])
     _chat_widget = new QTextEdit();
     _chat_widget->setReadOnly(true);
 
-    QPushButton * event_button = new QPushButton("event");
+
     QPushButton * settings_button = new QPushButton("settings");
 
     QPushButton * set_button = new QPushButton("set nickname");
     QLineEdit * nickname_input = new QLineEdit(communication.get_nickname());
 
-    SetNicknameDialog set_nickname_dialog(nickname_input, set_button);
+    const QString set_nickname_dialog_title("Set nickname");
+
+    SimpleInputDialog set_nickname_dialog(set_nickname_dialog_title, nickname_input, set_button);
+
     set_nickname_dialog.setModal(true);
     QObject::connect(settings_button, SIGNAL(clicked()), &set_nickname_dialog, SLOT(show()));
+    communication.connect(&set_nickname_dialog, SIGNAL(set_input(const QString &)), SLOT(handle_set_nickname(const QString &)));
 
-    communication.connect(&set_nickname_dialog, SIGNAL(set_nickname(const QString &)), SLOT(handle_set_nickname(const QString &)));
+
+    QPushButton * event_button = new QPushButton("event");
+    QPushButton * create_event_button = new QPushButton("create event");
+    QLineEdit * eventname_input = new QLineEdit("");
+
+    const QString create_event_dialog_title("Create event");
+
+    SimpleInputDialog create_event_dialog(create_event_dialog_title, eventname_input, create_event_button);
+
+    create_event_dialog.setModal(true);
+    QObject::connect(event_button, SIGNAL(clicked()), &create_event_dialog, SLOT(show()));
+  //  eventhandler.connect(&create_event_dialog, SIGNAL(set_input(const QString &)), SLOT(handle_set_event(const QString &)));
+
 
     Toolbar* toolbar = new Toolbar(event_button, settings_button);
 
@@ -63,9 +79,6 @@ int Application::execute(int argc, char * argv[])
     QListView* online_list_view = new QListView();
     online_list_view->setModel(_online_list_model);
     _online_list_model->setStringList(onlinelist.get_online_users());
-
-
-
 
     Gui gui(toolbar, _chat_widget, send_widget, online_list_view);
 

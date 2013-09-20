@@ -3,21 +3,22 @@
 
 namespace IM {
 
-SetNicknameDialog::SetNicknameDialog(QLineEdit* nickname_input, QPushButton* set_button, QWidget* parent) :
+SimpleInputDialog::SimpleInputDialog(const QString & title, QLineEdit* input_field, QPushButton* set_button, QWidget* parent) :
     QDialog(parent),
-    _nickname_input(nickname_input),
+    _input_field(input_field),
     _set_button(set_button)
 {
   _layout.addWidget(_set_button);
-  _layout.addWidget(_nickname_input);
+  _layout.addWidget(_input_field);
   setLayout(&_layout);
-  connect(_set_button, SIGNAL(clicked()), SLOT(handle_set_nickname_clicked()));
+  setWindowTitle(title);
+  connect(_set_button, SIGNAL(clicked()), SLOT(handle_set_button_clicked()));
 }
 
-void SetNicknameDialog::handle_set_nickname_clicked()
+void SimpleInputDialog::handle_set_button_clicked()
 {
-  if (!_nickname_input->text().isEmpty()) {
-    emit set_nickname(_nickname_input->text());
+  if (!_input_field->text().isEmpty()) {
+    emit set_input(_input_field->text());
   }
   close();
 }

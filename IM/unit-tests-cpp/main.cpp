@@ -4,7 +4,7 @@
 #include "application_test.h"
 #include "gui_test.h"
 #include "sendwidget_test.h"
-#include "setnickname_test.h"
+#include "simple_input_dialog_test.h"
 #include "onlinelist_test.h"
 
 template<typename Test>
@@ -23,7 +23,7 @@ int main(int argc, char * argv[])
     int exit_code = 0;
 
     execute_test<SendWidgetTest>(exit_code, argc, argv);
-    execute_test<SetNicknameTest>(exit_code, argc, argv);
+    execute_test<SimpleInputDialogTest>(exit_code, argc, argv);
     execute_test<OnlineList_Test>(exit_code, argc, argv);
     execute_test<Gui_Test>(exit_code, argc, argv);
     execute_test<Application_Test>(exit_code, argc, argv);

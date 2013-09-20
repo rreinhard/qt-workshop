@@ -8,26 +8,24 @@
 
 namespace IM {
 
-class SetNicknameDialog : public QDialog
+class SimpleInputDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    SetNicknameDialog(QLineEdit* nickname_input, QPushButton* set_button, QWidget* parent = 0);
+    SimpleInputDialog(const QString & title, QLineEdit* input_field, QPushButton* set_button, QWidget* parent = 0);
 
 public slots:
-    void handle_set_nickname_clicked();
+    void handle_set_button_clicked();
 
 signals:
-    void set_nickname(QString const & nickname);
+    void set_input(const QString & nickname);
 
 private:
     QVBoxLayout _layout;
-    QLineEdit* _nickname_input;
+    QLineEdit* _input_field;
     QPushButton* _set_button;
 
-friend class SetNicknameTest;
-    
 };
 
 } //namespace IM

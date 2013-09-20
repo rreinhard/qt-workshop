@@ -6,16 +6,16 @@
 
 #include "application-cpp/set_nickname_dialog.h"
 
-#include "setnickname_test.h"
+#include "simple_input_dialog_test.h"
 
-void SetNicknameTest::clicking_the_set_button_signals_set_nickname_with_the_name_from_the_input_field()
+void SimpleInputDialogTest::clicking_the_button_signals_set_input_with_the_text_from_the_input_field()
 {
     QPushButton* set_button = new QPushButton("set nickname");
     QLineEdit* nickname_input = new QLineEdit();
 
     // arrange
-    IM::SetNicknameDialog testee(nickname_input, set_button);
-    QSignalSpy signal_spy(&testee, SIGNAL(set_nickname(QString const &)));
+    IM::SimpleInputDialog testee("Set Nickname", nickname_input, set_button);
+    QSignalSpy signal_spy(&testee, SIGNAL(set_input(QString const &)));
 
     QString const expected_nickname = "BugsBunny";
     nickname_input->setText(expected_nickname);
@@ -31,14 +31,14 @@ void SetNicknameTest::clicking_the_set_button_signals_set_nickname_with_the_name
     QCOMPARE(arguments.at(0).toString(), expected_nickname);
 }
 
-void SetNicknameTest::clicking_the_set_button_does_not_signal_set_nickname_when_the_input_field_is_empty()
+void SimpleInputDialogTest::clicking_the_button_does_not_signal_set_input_when_the_input_field_is_empty()
 {
     QPushButton* set_button = new QPushButton("set nickname");
     QLineEdit* nickname_input = new QLineEdit();
 
     // arrange
-    IM::SetNicknameDialog testee(nickname_input, set_button);
-    QSignalSpy signal_spy(&testee, SIGNAL(set_nickname(QString const &)));
+    IM::SimpleInputDialog testee("Set Nickname", nickname_input, set_button);
+    QSignalSpy signal_spy(&testee, SIGNAL(set_input(QString const &)));
 
     nickname_input->clear();
 
