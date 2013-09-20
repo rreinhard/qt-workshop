@@ -1,4 +1,4 @@
-#include "application-cpp/set_nickname_dialog.h"
+#include "application-cpp/simple_input_dialog.h"
 
 
 namespace IM {

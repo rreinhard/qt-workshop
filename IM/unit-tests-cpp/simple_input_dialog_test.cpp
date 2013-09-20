@@ -4,7 +4,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QLineEdit>
 
-#include "application-cpp/set_nickname_dialog.h"
+#include "application-cpp/simple_input_dialog.h"
 
 #include "simple_input_dialog_test.h"
 
