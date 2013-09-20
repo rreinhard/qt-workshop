@@ -37,12 +37,13 @@ void OnlineList::update_timestamps()
         return;
 
     QTime now = QTime::currentTime();
+    QMutableListIterator<User_entry> i(_online_users);
 
-    for(User_list::iterator iterator = _online_users.begin(); iterator != _online_users.end(); iterator++)
+    while (i.hasNext())
     {
-        if(iterator->second.addSecs(7) < now)
+        if(i.next().second.addSecs(7) < now)
         {
-            iterator = _online_users.erase(iterator);
+            i.remove();
             listchanged = true;
         }
     }
