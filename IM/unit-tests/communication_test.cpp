@@ -167,7 +167,7 @@ void CommunicationTest::received_message_test()
     // act
     IM::Communication testee(udp_socket, expected_nickname, 41000);
 
-    QSignalSpy rcvd_keep_alive(&testee, SIGNAL(received_message(quint32, QString const &, QString const & )));
+    QSignalSpy rcvd_keep_alive(&testee, SIGNAL(received_message(QString const &, QString const & )));
 
     testee.handle_received_datagramm(data);
 
@@ -175,13 +175,11 @@ void CommunicationTest::received_message_test()
     QCOMPARE(rcvd_keep_alive.count(), 1);
 
     const auto arguments = rcvd_keep_alive.takeFirst();
-    QCOMPARE(arguments.size(), 3);
+    QCOMPARE(arguments.size(), 2);
 
-    quint32 command = arguments.at(0).toUInt();
-    QString str(arguments.at(1).toString());
-    QString msg_data(arguments.at(2).toString());
+    QString str(arguments.at(0).toString());
+    QString msg_data(arguments.at(1).toString());
 
-    QCOMPARE(command, expected_command);
     QCOMPARE(str, expected_nickname);
     QCOMPARE(msg_data, expected_data);
 }
