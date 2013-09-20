@@ -10,11 +10,13 @@ CONFIG -= app_bundle
 SOURCES += main.cpp \
     communication_integration.cpp \
     stubs/qudpsocket_stub.cpp \
-    onlinelist_integration.cpp
+    onlinelist_integration.cpp \
+    eventlist_integration.cpp
 HEADERS += \
     communication_integration.h \
     stubs/qudpsocket_stub.h \
-    onlinelist_integration.h
+    onlinelist_integration.h \
+    eventlist_integration.h
 
 
 include(../common.pri)
