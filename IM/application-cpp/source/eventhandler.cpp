@@ -8,6 +8,7 @@ EventHandler::EventHandler(QObject *parent) :
     _eventData(),
     _sendCycle(5000)
 {
+    connect(&_sendTimer, SIGNAL(timeout()), SLOT(resend_message()));
 }
 
 void EventHandler::create_event(QString eventname)

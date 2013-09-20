@@ -1,4 +1,5 @@
 #include <QtCore/QStringListModel>
+#include <QtCore/QList>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QLineEdit>
@@ -16,6 +17,7 @@
 #include "application-cpp/onlinelist.h"
 #include "application-cpp/simple_input_dialog.h"
 #include "application-cpp/eventhandler.h"
+#include "application-cpp/eventlist.h"
 
 namespace IM {
 
@@ -38,11 +40,12 @@ int Application::execute(int argc, char * argv[])
 
 
     _onlinelist = new OnlineList();
-   // _eventList = new EventList();
+    _eventList = new EventList();
 
     connect(_communication, SIGNAL(received_keep_alive(QString)), _onlinelist, SLOT(update_user(QString)));
     connect(_onlinelist, SIGNAL(list_changed(QStringList)), SLOT(update_Model()));
-    //connect(_eventList, SIGNAL(list_changed(QStringList)), SLOT(update_Model()));
+    connect(_communication, SIGNAL(received_host_event(QString const &, QString const &)), _eventList, SLOT(update_event(QString, QString)));
+    connect(_eventList, SIGNAL(list_changed(IM::Events)), SLOT(update_Model()));
 
     _chat_widget = new QTextEdit();
     _chat_widget->setReadOnly(true);
@@ -102,7 +105,7 @@ int Application::execute(int argc, char * argv[])
 void Application::update_Model()
 {
     QStringList user_list  = _onlinelist->get_online_users();
-   // auto event_list = _eventList->get_active_events();
+    Events event_list = _eventList->get_active_events();
 
     QStringList merged_list;
 
@@ -113,14 +116,14 @@ void Application::update_Model()
 
        merged_list.append(current_user);
 
-/*         QListIterator<> eventIterator(event_list);
+        QListIterator<EventData> eventIterator(event_list);
         while (eventIterator.hasNext())
         {
             const EventData current_event = eventIterator.next();
 
-            if (current_event.nickname == current_user)
+            if (current_event.nick_name == current_user)
                 merged_list.append("\t"+current_event.event_name);
-      }*/
+        }
     }
 
     _online_list_model->setStringList(merged_list);
