@@ -13,6 +13,7 @@ private slots:
     void set_nickname_and_send_message_broadcasts_the_message_over_udp_with_correct_nickname_set();
     void received_keep_alive_test();
     void received_message_test();
+    void received_host_event_test();
 };
 
 #endif // COMMUNICATION_TEST_H

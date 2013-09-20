@@ -183,3 +183,39 @@ void CommunicationTest::received_message_test()
     QCOMPARE(str, expected_nickname);
     QCOMPARE(msg_data, expected_data);
 }
+
+void CommunicationTest::received_host_event_test()
+{
+    const QString expected_nickname = "Name";
+    const QString expected_data = "Message Data";
+
+    // arrange
+    QUdpSocketMock udp_socket;
+    const quint32 expected_command = IM::Command::HostEvent;
+
+    QByteArray data;
+    QDataStream stream(&data, QIODevice::WriteOnly);
+    stream.setVersion(QDataStream::Qt_5_0);
+    stream << expected_command;
+    stream << expected_nickname;
+    stream << expected_data;
+
+    // act
+    IM::Communication testee(udp_socket, expected_nickname, 41000);
+
+    QSignalSpy rcvd_keep_alive(&testee, SIGNAL(received_host_event(QString const &, QString const & )));
+
+    testee.handle_received_datagramm(data);
+
+    // assert
+    QCOMPARE(rcvd_keep_alive.count(), 1);
+
+    const auto arguments = rcvd_keep_alive.takeFirst();
+    QCOMPARE(arguments.size(), 2);
+
+    QString str(arguments.at(0).toString());
+    QString msg_data(arguments.at(1).toString());
+
+    QCOMPARE(str, expected_nickname);
+    QCOMPARE(msg_data, expected_data);
+}

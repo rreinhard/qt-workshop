@@ -7,6 +7,9 @@
 
 class QTextEdit;
 
+class OnlineList;
+class EventList;
+
 namespace IM {
 
 class Communication;
@@ -21,7 +24,7 @@ public:
     int execute(int argc, char * argv[]);
 
 private slots:
-    void update_Model(QStringList list);
+    void update_Model();
     void received_message(QString const & nickname, QString const & message);
     void send_event_message(QString const & event_name);
 
@@ -30,6 +33,8 @@ private:
     QTextEdit* _chat_widget;
     Communication* _communication;
     EventHandler* _eventhandler;
+    OnlineList* _onlinelist;
+    EventList* _eventList;
 };
 
 } // IM

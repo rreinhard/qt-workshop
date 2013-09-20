@@ -80,6 +80,14 @@ void Communication::handle_received_datagramm(QByteArray & datagram)
             emit received_message(name, message_data);
         }
             break;
+
+        case Command::HostEvent:
+        {
+            QString message_data;
+            stream >> message_data;
+            emit received_host_event(name, message_data);
+        }
+            break;
     }
 
     qDebug() << "Received: " << cmd << name;
