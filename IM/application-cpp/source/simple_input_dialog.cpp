@@ -1,4 +1,4 @@
-#include "application-cpp/set_nickname_dialog.h"
+#include "application-cpp/simple_input_dialog.h"
 
 
 namespace IM {
@@ -12,6 +12,9 @@ SimpleInputDialog::SimpleInputDialog(const QString & title, QLineEdit* input_fie
   _layout.addWidget(_input_field);
   setLayout(&_layout);
   setWindowTitle(title);
+  const quint32 window_width = 200;
+  const quint32 window_height = 60;
+  resize(window_width,window_height);
   connect(_set_button, SIGNAL(clicked()), SLOT(handle_set_button_clicked()));
 }
 

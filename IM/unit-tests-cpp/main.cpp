@@ -6,6 +6,7 @@
 #include "sendwidget_test.h"
 #include "simple_input_dialog_test.h"
 #include "onlinelist_test.h"
+#include "eventlist_test.h"
 #include "eventhandler_test.h"
 
 template<typename Test>
@@ -26,6 +27,7 @@ int main(int argc, char * argv[])
     execute_test<SendWidgetTest>(exit_code, argc, argv);
     execute_test<SimpleInputDialogTest>(exit_code, argc, argv);
     execute_test<OnlineList_Test>(exit_code, argc, argv);
+    execute_test<EventList_Test>(exit_code, argc, argv);
     execute_test<EventHandler_Test>(exit_code, argc, argv);
     execute_test<Gui_Test>(exit_code, argc, argv);
     execute_test<Application_Test>(exit_code, argc, argv);

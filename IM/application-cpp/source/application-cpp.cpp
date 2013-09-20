@@ -14,7 +14,7 @@
 #include "application-cpp/application-cpp.h"
 #include "application-cpp/sendwidget.h"
 #include "application-cpp/onlinelist.h"
-#include "application-cpp/set_nickname_dialog.h"
+#include "application-cpp/simple_input_dialog.h"
 #include "application-cpp/eventhandler.h"
 
 namespace IM {
